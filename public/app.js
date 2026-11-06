@@ -60,4 +60,12 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
+// Clear: empty the message and the reply; keep name and e-mail.
+document.getElementById("clear").addEventListener("click", () => {
+  form.message.value = "";
+  replyBox.textContent = "";
+  replyBox.hidden = true;
+  form.message.focus();
+});
+
 showWeather();

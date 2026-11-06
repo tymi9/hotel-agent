@@ -69,6 +69,14 @@ button {
 }
 button:disabled { opacity: 0.6; cursor: wait; }
 
+.buttons { display: flex; gap: 12px; margin-top: 24px; }
+.buttons button { margin-top: 0; }
+button.secondary {
+  color: var(--accent);
+  background: #fff;
+  border: 1px solid var(--accent);
+}
+
 .reply {
   margin-top: 32px;
   padding: 20px;
