@@ -1,0 +1,54 @@
+[
+  {
+    "time": "2026-11-06T18:13:21.173Z",
+    "name": "tom",
+    "email": "tom.becker@example.com",
+    "message": "We arrive on the 20th. Is breakfast included in our booking? And can we still cancel if our plans change?",
+    "department": "Reservations",
+    "urgency": "normal",
+    "summary": "Guest asks if breakfast is included and if cancellation is possible; booking is non-refundable, no breakfast. Answered per policy.",
+    "status": "ANSWERED",
+    "reply": "Hello Mr Becker. Your booking for 20–22 November doesn't include breakfast. You can add it in advance for €12 per person per day. If you add it at check-in, it costs €14. Breakfast is served from 07:00 to 10:30, and children under 6 eat free.\n\nYour Suite is on the non-refundable rate, which is already paid. It can't be cancelled for a refund, and a no-show isn't refunded either. If your plans change, you can move the stay once to new dates within 6 months. That depends on availability and has a €25 change fee.",
+    "trace": [
+      {
+        "type": "model",
+        "step": 1,
+        "stop_reason": "tool_use",
+        "asked_for_tool": true
+      },
+      {
+        "type": "tool",
+        "name": "lookup_booking",
+        "arguments": {},
+        "result": "{\"booking_id\":\"B002\",\"name\":\"Tom Becker\",\"email\":\"tom.becker@example.com\",\"check_in\":\"2026-11-20\",\"check_out\":\"2026-11-22\",\"room\":\"Suite\",\"breakfast\":\"no\",\"rate\":\"non-refundable\",\"paid\":\"yes\"}"
+      },
+      {
+        "type": "model",
+        "step": 2,
+        "stop_reason": "tool_use",
+        "asked_for_tool": true
+      },
+      {
+        "type": "tool",
+        "name": "log_request",
+        "arguments": {
+          "department": "Reservations",
+          "urgency": "normal",
+          "summary": "Guest asks if breakfast is included and if cancellation is possible; booking is non-refundable, no breakfast. Answered per policy.",
+          "status": "ANSWERED"
+        },
+        "result": "{\"ok\":true}"
+      },
+      {
+        "type": "model",
+        "step": 3,
+        "stop_reason": "end_turn",
+        "asked_for_tool": false
+      },
+      {
+        "type": "final",
+        "text": "Hello Mr Becker. Your booking for 20–22 November doesn't include breakfast. You can add it in advance for €12 per person per day. If you add it at check-in, it costs €14. Breakfast is served from 07:00 to 10:30, and children under 6 eat free.\n\nYour Suite is on the non-refundable rate, which is already paid. It can't be cancelled for a refund, and a no-show isn't refunded either. If your plans change, you can move the stay once to new dates within 6 months. That depends on availability and has a €25 change fee."
+      }
+    ]
+  }
+]
